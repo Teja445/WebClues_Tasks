@@ -1,0 +1,24 @@
+- name: Configure EC2 instance
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Clone application code
+      git:
+        repo: https://github.com/your-repo/simple-node-app.git
+        dest: /var/www/simple-node-app
+
+    - name: Install dependencies
+      command: npm install
+      args:
+        chdir: /var/www/simple-node-app
+
+    - name: Start the application
+      command: npm start
+      args:
+        chdir: /var/www/simple-node-app
+
