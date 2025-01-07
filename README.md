@@ -22,8 +22,9 @@ Steps to Build and Run:
 Task 2: Kubernetes Deployment
   - Created a Kubernetes deployment YAML for a web application using the nginx:latest image.
   - Configured 3 replicas, liveness and readiness probes, and guaranteed QoS settings.
-1. Commands:
+    ```bash
      kubectl apply -f deployment.yaml
+    
      kubectl get pods
 
 Task 3: Resource Provisioning and Configuration Management
@@ -31,9 +32,11 @@ Task 3: Resource Provisioning and Configuration Management
   - Configured the instance using Ansible to:
       Install Nginx.
       Deploy the Node.js application.
-Commands:
+   ```bash
      terraform init
+
      terraform apply
+
      ansible-playbook -i inventory.ini playbook.yml
 
 
