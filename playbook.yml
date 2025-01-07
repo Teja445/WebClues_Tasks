@@ -2,23 +2,44 @@
   hosts: all
   become: true
   tasks:
-    - name: Install Node.js
+    - name: Install required packages
       apt:
-        name: nodejs
+        name:
+          - nginx
+          - nodejs
         state: present
 
-    - name: Clone application code
+    - name: Create application directory
+      file:
+        path: /var/www/simple-node-app
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Clone Node.js application code
       git:
         repo: https://github.com/your-repo/simple-node-app.git
         dest: /var/www/simple-node-app
 
-    - name: Install dependencies
+    - name: Install Node.js dependencies
       command: npm install
       args:
         chdir: /var/www/simple-node-app
 
-    - name: Start the application
-      command: npm start
-      args:
-        chdir: /var/www/simple-node-app
+    - name: Replace Nginx configuration file
+      copy:
+        src: nginx_default
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
+    - name: Start the Node.js application
+      shell: |
+        nohup node /var/www/simple-node-app/app.js > /var/www/simple-node-app/app.log 2>&1 &
 
