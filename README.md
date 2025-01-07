@@ -10,7 +10,7 @@ This repository contains solutions for the DevOps Practical Task assignment. The
 
 Task 1: Node.js Application Deployment on Docker
 - a simple Node.js application containerized by using a Dockerfile.
-- The application listens on port `3000` .
+- The application listens on port `3000`.
 
 Steps to Build and Run:
 1. Build the Docker image:
