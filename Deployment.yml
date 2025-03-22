@@ -1,14 +1,13 @@
-apiVersion: raviteja
-kind: raviteja
+apiVersion: ravitej
+kind: ravitej
 metadata:
-  name: raviteja
+  name: ravitej
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: raviteja
+      app: ravitej
   template:
     metadata:
       labels:
-        app: raviteja
-   
+        app: ravitej
