@@ -1,14 +1,14 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: ravi
+kind: ravi
 metadata:
-  name: nginx-deployment
+  name: ravi
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: ravi
   template:
     metadata:
       labels:
-        app: nginx
+        app: ravi
    
